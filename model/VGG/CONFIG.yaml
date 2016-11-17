@@ -1,0 +1,5 @@
+DATA:
+  ROWS: 720
+  COLS: 1280
+  CHANNELS: 3
+  FISH_CLASSES: ['ALB', 'BET', 'DOL', 'LAG', 'NoF', 'OTHER', 'SHARK', 'YFT']

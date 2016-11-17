@@ -2,12 +2,22 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.optimizers import SGD
+import yaml
+from keras import backend as K
+
+def center_normalize(x):
+    return (x - K.mean(x)) / K.std(x)
 
 def build():
+    with open('CONFIG.yaml') as f:
+        CONFIG = yaml.load(f)
+    NUM_CLASSES = len(CONFIG['data']['FISH_CLASSES'])
+
     model = Sequential()
-    # input: 100x100 images with 3 channels -> (3, 100, 100) tensors.
-    # this applies 32 convolution filters of size 3x3 each.
-    model.add(Convolution2D(32, 3, 3, border_mode='valid', input_shape=(3, 100, 100)))
+    model.add(Activation(activation=center_normalize,
+                         input_shape=(CONFIG['DATA']['ROWS'], CONFIG['DATA']['COLS'], CONFIG['DATA']['CHANNELS'])))
+
+    model.add(Convolution2D(32, 3, 3, border_mode='valid',))
     model.add(Activation('relu'))
     model.add(Convolution2D(32, 3, 3))
     model.add(Activation('relu'))
@@ -27,7 +37,7 @@ def build():
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
 
-    model.add(Dense(10))
+    model.add(Dense(NUM_CLASSES))
     model.add(Activation('softmax'))
 
     sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
