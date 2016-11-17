@@ -16,7 +16,6 @@ early_stopping = EarlyStopping(monitor='val_loss', patience=5, verbose=1, mode='
 
 vgg.fit(X_train, y_train, batch_size=64, nb_epoch=100,
         validation_data=(X_val,y_val), verbose=1, shuffle=True, callbacks=[early_stopping])
-
 preds = vgg.predict(X_val, verbose=1)
 print("Validation Log Loss: {}".format(log_loss(y_val, preds)))
 
