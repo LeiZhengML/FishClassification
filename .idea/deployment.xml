@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="server" uploadOnCheckin="6aa8ff31-575a-4d79-88bf-bb0a28936879">
+    <serverData>
+      <paths name="server">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/nianzuma/FishClassification" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="server" />
+  </component>
+</project>
