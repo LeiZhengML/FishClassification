@@ -19,7 +19,7 @@ def read_image(src,ROWS,COLS):
     return im
 
 
-def load_data(TRAIN_DIR='../../data/train/'):
+def load_train_data(TRAIN_DIR='../../data/train/'):
     with open('CONFIG.yaml') as f:
         CONFIG = yaml.load(f)
     files = []
@@ -47,7 +47,21 @@ def load_data(TRAIN_DIR='../../data/train/'):
     y_all = LabelEncoder().fit_transform(y_all)
     y_all = np_utils.to_categorical(y_all)
 
-    X_train, X_test, y_train, y_test = train_test_split(X_all, y_all,
+    X_train, X_val, y_train, y_val = train_test_split(X_all, y_all,
                                                           test_size=0.2, random_state=23,
                                                           stratify=y_all)
-    return X_train,X_test,y_train,y_test
+    return X_train,X_val,y_train,y_val
+
+def load_test_data(TEST_DIR='../../data/test_stg1/'):
+    with open('CONFIG.yaml') as f:
+        CONFIG = yaml.load(f)
+
+    test_files = [im for im in os.listdir(TEST_DIR)]
+    test = np.ndarray((len(test_files),
+                       CONFIG['DATA']['ROWS'], CONFIG['DATA']['COLS'], CONFIG['DATA']['CHANNELS']), dtype=np.uint8)
+
+
+    for i, im in enumerate(test_files):
+        test[i] = read_image(TEST_DIR + im,CONFIG['DATA']['ROWS'],CONFIG['DATA']['COLS'])
+
+    return test

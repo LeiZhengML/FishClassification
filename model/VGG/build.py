@@ -11,13 +11,14 @@ def center_normalize(x):
 def build():
     with open('CONFIG.yaml') as f:
         CONFIG = yaml.load(f)
-    NUM_CLASSES = len(CONFIG['data']['FISH_CLASSES'])
+
+    NUM_CLASSES = len(CONFIG['DATA']['FISH_CLASSES'])
 
     model = Sequential()
     model.add(Activation(activation=center_normalize,
                          input_shape=(CONFIG['DATA']['ROWS'], CONFIG['DATA']['COLS'], CONFIG['DATA']['CHANNELS'])))
 
-    model.add(Convolution2D(32, 3, 3, border_mode='valid',))
+    model.add(Convolution2D(32, 3, 3, border_mode='valid'))
     model.add(Activation('relu'))
     model.add(Convolution2D(32, 3, 3))
     model.add(Activation('relu'))
@@ -26,7 +27,7 @@ def build():
 
     model.add(Convolution2D(64, 3, 3, border_mode='valid'))
     model.add(Activation('relu'))
-    model.add(Convolution2D(64, 3, 3))
+    model.add(Convolution2D(64, 3, 3,))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(0.25))
@@ -40,7 +41,7 @@ def build():
     model.add(Dense(NUM_CLASSES))
     model.add(Activation('softmax'))
 
-    sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
+    sgd = SGD(lr=0.002, decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(loss='categorical_crossentropy', optimizer=sgd)
 
     return model
