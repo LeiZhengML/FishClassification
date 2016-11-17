@@ -20,6 +20,7 @@ preds = vgg.predict(X_val, verbose=1)
 print("Validation Log Loss: {}".format(log_loss(y_val, preds)))
 
 test = load_test_data()
+
 test_preds = vgg.predict(test, verbose=1)
 create_submission(test_preds,CONFIG=CONFIG)
 

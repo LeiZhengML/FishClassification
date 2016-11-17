@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="6aa8ff31-575a-4d79-88bf-bb0a28936879" name="server" url="http://bingliu2.cs.uic.edu">
+      <webServer id="44487ab0-3906-4f2a-bdd4-c7f693f8a8b2" name="server" url="http://bingliu2.cs.uic.edu">
         <fileTransfer host="bingliu2.cs.uic.edu" port="22" rootFolder="/home/nianzuma" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
