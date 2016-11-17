@@ -18,6 +18,7 @@ def read_image(src,ROWS,COLS):
     im = cv2.resize(im, (COLS, ROWS), interpolation=cv2.INTER_CUBIC)
     return im
 
+
 def load_data(TRAIN_DIR='../../data/train/'):
     with open('CONFIG.yaml') as f:
         CONFIG = yaml.load(f)
