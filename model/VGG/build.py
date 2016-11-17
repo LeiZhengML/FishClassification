@@ -11,7 +11,6 @@ def center_normalize(x):
 def build():
     with open('CONFIG.yaml') as f:
         CONFIG = yaml.load(f)
-
     NUM_CLASSES = len(CONFIG['DATA']['FISH_CLASSES'])
 
     model = Sequential()
