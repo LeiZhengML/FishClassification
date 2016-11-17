@@ -47,10 +47,10 @@ def load_train_data(TRAIN_DIR='../../data/train/'):
     y_all = LabelEncoder().fit_transform(y_all)
     y_all = np_utils.to_categorical(y_all)
 
-    X_train, X_val, y_train, y_val = train_test_split(X_all, y_all,
-                                                          test_size=0.2, random_state=23,
-                                                          stratify=y_all)
-    return X_train,X_val,y_train,y_val
+    #X_train, X_val, y_train, y_val = train_test_split(X_all, y_all,
+    #                                                      test_size=0.2, random_state=23,
+    #                                                      stratify=y_all)
+    return X_all,y_all#X_train,X_val,y_train,y_val
 
 def load_test_data(TEST_DIR='../../data/test_stg1/'):
     with open('CONFIG.yaml') as f:
