@@ -15,7 +15,7 @@ vgg = build()
 early_stopping = EarlyStopping(monitor='val_loss', patience=5, verbose=1, mode='auto')
 
 vgg.fit(X_all,y_all, batch_size=CONFIG['VGG']['BATCH_SIZE'], nb_epoch=CONFIG['VGG']['NB_EPOCH'],
-        validation_split=CONFIG['VGG']['VAL_RATIO'], verbose=1, shuffle=True, callbacks=[early_stopping])
+        validation_split=CONFIG['VGG']['VAL_RATIO'], verbose=1, shuffle=True, callbacks=[])
 #preds = vgg.predict(X_val, verbose=1)
 #print("Validation Log Loss: {}".format(log_loss(y_val, preds)))
 
