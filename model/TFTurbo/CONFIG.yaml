@@ -5,6 +5,5 @@ DATA:
   FISH_CLASSES: ['ALB', 'BET', 'DOL', 'LAG', 'NoF', 'OTHER', 'SHARK', 'YFT']
 
 VGG:
-  VAL_RATIO: 0.2
   BATCH_SIZE: 128
   NB_EPOCH: 150
